@@ -1,6 +1,6 @@
 FROM openjdk:8-jre-alpine
 
-LABEL maintainer="mcerovski@outlook.com"
+LABEL maintainer="cerovskimatija@gmail.com"
 
 ENV DOWNLOAD https://repo1.maven.org/maven2/com/h2database/h2/1.4.200/h2-1.4.200.jar
 ENV DATA_DIR /opt/h2/h2-data
