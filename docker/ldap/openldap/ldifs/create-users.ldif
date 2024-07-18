@@ -1,0 +1,64 @@
+# ROOT
+dn: dc=app,dc=hr
+objectClass: dcObject
+objectClass: organization
+dc: app
+o: app
+
+# Users
+dn: ou=Users,dc=app,dc=hr
+changetype: add
+objectclass: organizationalUnit
+ou: Users
+
+# Admin user
+dn: cn=admin,ou=Users,dc=app,dc=hr
+changetype: add
+objectclass: inetOrgPerson
+cn: admin
+givenname: ADMIN
+sn: Administrator
+displayname: Administrator
+mail: admin@app.hr
+userpassword: password
+
+# user
+dn: cn=user,ou=Users,dc=app,dc=hr
+changetype: add
+objectclass: inetOrgPerson
+cn: user
+givenname: USER
+sn: User
+displayname: User
+mail: user@app.hr
+userpassword: password
+
+
+# Groups
+dn: ou=Groups,dc=app,dc=hr
+changetype: add
+objectclass: organizationalUnit
+ou: Groups
+
+# Admin group
+dn: cn=Admin,ou=Groups,dc=app,dc=hr
+changetype: add
+objectclass: groupOfUniqueNames
+cn: Admin
+uniqueMember: cn=admin,ou=Users,dc=app,dc=hr
+
+# User group
+dn: cn=User,ou=Groups,dc=app,dc=hr
+changetype: add
+objectclass: groupOfUniqueNames
+cn: User
+uniqueMember: cn=user,ou=Users,dc=app,dc=hr
+
+# Other Group
+dn: cn=Other,ou=Groups,dc=app,dc=hr
+changetype: add
+objectclass: groupOfUniqueNames
+cn: Other
+uniqueMember: cn=admin,ou=Users,dc=app,dc=hr
+uniqueMember: cn=user,ou=Users,dc=app,dc=hr
+uniqueMember: cn=audit,ou=Users,dc=app,dc=hr

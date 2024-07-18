@@ -1,0 +1,15 @@
+version: '3'
+services:
+  openldap:
+    image: bitnami/openldap:2.6.3
+    ports:
+      - 1389:1389
+      - 1636:1636
+    environment:
+      - LDAP_ROOT=dc=app,dc=hr
+      - LDAP_ADMIN_USERNAME=admin
+      - LDAP_ADMIN_PASSWORD=password
+      - LDAP_CUSTOM_LDIF_DIR=/ldifs
+    volumes:
+      - './openldap/ldifs:/ldifs'
+      - './openldap/schemas:/schemas'
