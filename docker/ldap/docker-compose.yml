@@ -13,3 +13,13 @@ services:
     volumes:
       - './openldap/ldifs:/ldifs'
       - './openldap/schemas:/schemas'
+
+  phpldapadmin:
+    image: osixia/phpldapadmin:latest
+    ports:
+      - 8080:80
+    environment:
+      - PHPLDAPADMIN_LDAP_HOSTS=ldap://openldap:1389
+      - PHPLDAPADMIN_HTTPS=false
+    depends_on:
+      - openldap
